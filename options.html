@@ -1,0 +1,107 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+  <title>Fanplayr Integration Debugger</title>
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="options.css">
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="lodash.min.js"></script>
+  <script src="options.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <div ng-controller="RulesCtrl">
+
+      <div id="edit-modal" class="modal xfade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">{{ !!editRule.url ? editRule.url : 'New Rule' }}</h4>
+            </div>
+            <div class="modal-body">
+              <p>URLs must match exactly including protocol. You can use <code>*</code> as a wildcard in URLs. E.g. <code>*kikocosmetics.com*</code>.</p>
+              <p>Full regular expressions are also supported in the form <code>/pattern/modifiers</code>. E.g. <code>/test.com/i</code>.</p>
+              <form role="form">
+                <div class="form-group">
+                  <label for="rule-url">URL or RegExp</label>
+                  <input id="rule-url" type="text" ng-model="editRule.url" class="form-control" placeholder="URL or RegExp">
+                  <!-- <div class="input-group">
+                    <input id="rule-url" type="text" ng-model="editRule.url" class="form-control" placeholder="URL or RegExp">
+                    <span class="input-group-addon">
+                      RegExp <input type="checkbox">
+                    </span>
+                  </div> -->
+                </div>
+                <div class="form-group">
+                  <label for="rule-content">Type</label>
+                  <select class="form-control" ng-model="editRule.type" ng-options="type.id as type.label for type in ruleTypes"></select>
+                </div>
+                <div class="form-group">
+                  <label for="rule-content">{{ editRule.type === 'url' ? 'Script URL' : 'Script Content' }}</label>
+                  <textarea id="rule-content" rows="6" class="form-control" ng-model="editRule.content" placeholder="{{ editRule.type === 'url' ? '//www.fanplayr.com/path/to/script.js' : '// Javascript source.' }}"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancelSaveRule()">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="saveRule()" ng-disabled="!canSave">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.modal -->
+
+      <div id="backup-modal" class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Backup Settings</h4>
+            </div>
+            <div class="modal-body">
+              <form role="form">
+                <div class="form-group">
+                  <label for="rule-content">Settings JSON</label>
+                  <textarea id="rule-content" rows="18" class="form-control" ng-model="backup.json"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="backup.cancel()">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="backup.restore()">Restore</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.modal -->
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Site</th>
+            <th>Type</th>
+            <th>Content</th>
+            <th>Enabled</th>
+            <th width="50"></th>
+            <th width="50"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="rule in rules">
+            <td><a href="http://{{ rule.url }}" target="_blank">{{ rule.url }}</a></td>
+            <td>{{ rule.type }}</td>
+            <td>{{ rule.content }}</td>
+            <td><span class="btn" ng-class="{'btn-success':rule.enabled, 'btn-danger':!rule.enabled}" ng-click="toggleEnabled(rule)">{{ rule.enabled ? 'On' : 'Off' }}</span></td>
+            <td><a href="" ng-click="edit(rule)">Edit</a></td>
+            <td><a href="" ng-click="remove(rule)">Remove</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <span class="btn btn-primary" ng-click="add()">New Rule</span>
+      <span class="btn btn-default" ng-click="showBackupModal()">Backup / Restore Settings</span>
+    </div>
+
+  </div>
+</body>
+</html>
