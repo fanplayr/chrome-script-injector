@@ -1,5 +1,5 @@
-Fanplayr Script Injector
-========================
+![test](icon48.png) Fanplayr Script Injector
+============================================
 
 A Chrome browser extension for injecting scripts based on the browser url.
 
@@ -18,12 +18,26 @@ A Chrome browser extension for injecting scripts based on the browser url.
 
 ## Usage
 
-1. Open *Chrome > Preferences*.
-2. Click the *Extensions* tab.
-3. Click the *Options* link within the *Fanplayr Script Injector* extension.
-4. Click *New Rule* to define a new rule.
-5. Enter the website's domain, url or pattern to match against.
-6. Enter the script's url or content.
-7. Click *Save Changes*.
-8. Enable the rule you just added.
+### Creating a new rule
+
+1. Right-click any page and select *Fanplayr Script Injector* from the context menu.
+2. Click *New Rule* to define a new rule.
+3. Enter the website's domain, url or pattern to match against.
+4. Enter the script's url or content.
+5. Click *Save Changes*.
+6. Enable the rule you just added.
+
+### Backing up settings
+
+1. Open the extension options by right-clicking any page and selecting *Fanplayr Script Injector*.
+2. Click *Backup / Restore Settings*.
+3. Copy the JSON text and store it in a safe location.
+
+### Restoring settings
+
+1. Open the extension options by right-clicking any page and selecting *Fanplayr Script Injector*.
+2. Click *Backup / Restore Settings*.
+3. Paste the JSON text you previously saved into the text area.
+4. Click *Restore*.
+
 
