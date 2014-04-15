@@ -1,4 +1,4 @@
-![test](icon48.png) Fanplayr Script Injector
+![Icon](src\icon48.png) Fanplayr Script Injector
 ============================================
 
 A Chrome browser extension for injecting scripts based on the browser url.
