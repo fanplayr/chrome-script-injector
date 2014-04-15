@@ -37,6 +37,14 @@ function RulesCtrl ( $scope, $timeout ) {
     { id: 'execute', label: 'Inject Inline Script' }
   ];
 
+  $scope.getRuleLink = function ( rule ) {
+    var url = rule.url.replace(/\*/g, '');
+    if ( /^http/.test(rule.url) ) {
+      return url;
+    }
+    return 'http://' + url;
+  };
+
   $scope.toggleEnabled = function ( rule ) {
     rule.enabled = !rule.enabled;
     save();

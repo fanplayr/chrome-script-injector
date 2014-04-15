@@ -88,7 +88,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="rule in rules">
-            <td><a href="http://{{ rule.url }}" target="_blank">{{ rule.url }}</a></td>
+            <td><a href="{{ getRuleLink(rule) }}" target="_blank">{{ rule.url }}</a></td>
             <td>{{ rule.type }}</td>
             <td>{{ rule.content }}</td>
             <td><span class="btn" ng-class="{'btn-success':rule.enabled, 'btn-danger':!rule.enabled}" ng-click="toggleEnabled(rule)">{{ rule.enabled ? 'On' : 'Off' }}</span></td>

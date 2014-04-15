@@ -14,7 +14,7 @@ chrome.runtime.onInstalled.addListener(function() {
 chrome.contextMenus.onClicked.addListener(function ( info, tab ) {
   if ( info.menuItemId === "options" ) {
     chrome.tabs.create({
-      "url": chrome.extension.getURL("options.html")
+      "url": chrome.extension.getURL("src/options.html")
     });
   }
 });

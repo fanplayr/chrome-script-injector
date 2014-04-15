@@ -7,7 +7,7 @@ A Chrome browser extension for injecting scripts based on the browser url.
 
 1. Download the extension here, <https://github.com/fanplayr/chrome-script-injector/archive/master.zip>.
 2. Extract the zip file.
-3. Navigate to [chrome://extensions](chrome://extensions) in Chrome.
+3. Navigate to <a href="chrome://extensions" target="_blank">chrome://extensions</a> in Chrome.
 4. Ensure the **Developer mode** option is checked.
 5. Click the **Load unpacked extension** button.
 6. Browse to the folder that was created when you extracted the zip file and click **Select**.
