@@ -1,6 +1,5 @@
 (function () {
   var fanplayr = window.fanplayr;
-  console.log('expire4: ', fanplayr, document, window);
   if ( fanplayr && fanplayr.Utils ) {
     var tags = document.getElementsByTagName("script");
     var session = fanplayr.Utils.initSession("fanplayr_genius_session")
