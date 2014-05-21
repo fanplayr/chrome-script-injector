@@ -27,14 +27,12 @@ chrome.runtime.onMessage.addListener(function ( request, sender, sendResponse ) 
     var script = document.createElement("script");
     script.async = true;
     script.src = chrome.extension.getURL("src/expire-session.js");
-    console.log('inject', script);
     document.body.appendChild(script);
   }
   else if ( request.action === "show-session-key" ) {
     var script = document.createElement("script");
     script.async = true;
     script.src = chrome.extension.getURL("src/show-session-key.js");
-    console.log('inject', script);
     document.body.appendChild(script);
   }
 });
@@ -50,7 +48,6 @@ function buildRegExp ( url ) {
 }
 
 function evalRule ( rule ) {
-  // console.log('Executing Fanplayr Integration script: ' + rule.content);
   console.log('Executing Fanplayr Integration script...');
   var script = document.createElement('script');
   script.innerHTML = rule.content;
