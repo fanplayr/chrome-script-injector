@@ -1,7 +1,7 @@
 {
   "name": "Fanplayr Script Injector",
   "description": "Utility for injecting scripts into websites based on url patterns.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "background": {
     "scripts": [
       "src/bg.js"
@@ -24,6 +24,10 @@
       ],
       "run_at": "document_end"
     }
+  ],
+  "web_accessible_resources": [
+    "src/expire-session.js",
+    "src/show-session-key.js"
   ],
   "options_page": "src/options.html",
   "icons": {

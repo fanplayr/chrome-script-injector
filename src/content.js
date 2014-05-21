@@ -22,6 +22,23 @@ chrome.runtime.sendMessage({ method: "test" }, function ( res ) {
   }
 });
 
+chrome.runtime.onMessage.addListener(function ( request, sender, sendResponse ) {
+  if ( request.action === "expire-session" ) {
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = chrome.extension.getURL("src/expire-session.js");
+    console.log('inject', script);
+    document.body.appendChild(script);
+  }
+  else if ( request.action === "show-session-key" ) {
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = chrome.extension.getURL("src/show-session-key.js");
+    console.log('inject', script);
+    document.body.appendChild(script);
+  }
+});
+
 function buildRegExp ( url ) {
   var match = url.match(/^\/(.+?)\/(.*)$/);
   if ( match ) {
@@ -41,10 +58,16 @@ function evalRule ( rule ) {
 }
 
 function injectRule ( rule ) {
-  console.log('Injecting Fanplayr Integration script: ' + rule.content);
+  var url = rule.content || '';
+
+  // Prevent caching.
+  url += (url.indexOf('?') >= 0 ? '&' : '?') + 'cache_kill=' + (new Date().getTime());
+
+  console.log('Injecting Fanplayr Integration script: ' + url);
   var first = document.getElementsByTagName('script')[0];
   var script = document.createElement('script');
   script.async = true;
-  script.src = rule.content;
+  script.src = url;
+
   first.parentNode.insertBefore(script, first);
 }
