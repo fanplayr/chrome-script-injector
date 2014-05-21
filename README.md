@@ -18,7 +18,7 @@ The extension should now be installed.
 
 ### Creating a new rule
 
-1. Open the extension options by right-clicking any page and selecting **Fanplayr Script Injector**.
+1. Open the extension options by right-clicking any page and selecting **Fanplayr > Script Injector**.
 2. Click **New Rule** to define a new rule.
 3. Enter the website's domain, url or pattern to match against.
 4. Enter the script's url or content.
@@ -30,13 +30,13 @@ The script should be automatically injected into the url you defined the next ti
 
 ### Backing up settings
 
-1. Open the extension options by right-clicking any page and selecting **Fanplayr Script Injector**.
+1. Open the extension options by right-clicking any page and selecting **Fanplayr > Script Injector**.
 2. Click **Backup / Restore Settings**.
 3. Copy the JSON text and store it in a safe location.
 
 ### Restoring settings
 
-1. Open the extension options by right-clicking any page and selecting **Fanplayr Script Injector**.
+1. Open the extension options by right-clicking any page and selecting **Fanplayr > Script Injector**.
 2. Click **Backup / Restore Settings**.
 3. Paste the JSON text you previously saved into the text area.
 4. Click **Restore**.
