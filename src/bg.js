@@ -25,6 +25,13 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 
   chrome.contextMenus.create({
+    id:       "delete-session",
+    parentId: "root",
+    title:    "Delete Session",
+    contexts: ["all"]
+  });
+
+  chrome.contextMenus.create({
     id:       "show-session-key",
     parentId: "root",
     title:    "Show Session Key",
@@ -45,6 +52,16 @@ chrome.contextMenus.onClicked.addListener(function ( info, tab ) {
     }, function (tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {
         action: "expire-session"
+      });
+    });
+  }
+  else if ( info.menuItemId === "delete-session" ) {
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true
+    }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        action: "delete-session"
       });
     });
   }

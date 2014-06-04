@@ -27,6 +27,7 @@
   ],
   "web_accessible_resources": [
     "src/expire-session.js",
+    "src/delete-session.js",
     "src/show-session-key.js"
   ],
   "options_page": "src/options.html",

@@ -8,7 +8,7 @@
       if ( match ) {
         var script = document.createElement("script");
         script.async = true;
-        script.src = "//" + match[1] + "/external.genius/?a=expire-session&sk=" + session("key") + "&delete=0";
+        script.src = "//" + match[1] + "/external.genius/?a=expire-session&sk=" + session("key");
         document.body.appendChild(script);
         return;
       }

@@ -29,6 +29,12 @@ chrome.runtime.onMessage.addListener(function ( request, sender, sendResponse ) 
     script.src = chrome.extension.getURL("src/expire-session.js");
     document.body.appendChild(script);
   }
+  if ( request.action === "delete-session" ) {
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = chrome.extension.getURL("src/delete-session.js");
+    document.body.appendChild(script);
+  }
   else if ( request.action === "show-session-key" ) {
     var script = document.createElement("script");
     script.async = true;
