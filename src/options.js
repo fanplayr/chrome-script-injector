@@ -53,7 +53,9 @@ function RulesCtrl ( $scope, $timeout ) {
   $scope.addingRule = false;
 
   $scope.add = function () {
-    var rule = $scope.editRule = {};
+    var rule = $scope.editRule = {
+      preventCache: true
+    };
     // $scope.rules.push(rule);
     $scope.edit(rule);
 

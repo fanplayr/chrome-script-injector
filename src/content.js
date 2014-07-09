@@ -64,7 +64,9 @@ function injectRule ( rule ) {
   var url = rule.content || '';
 
   // Prevent caching.
-  url += (url.indexOf('?') >= 0 ? '&' : '?') + 'cache_kill=' + (new Date().getTime());
+  if ( rule.preventCache ) {
+    url += (url.indexOf('?') >= 0 ? '&' : '?') + 'cache_kill=' + (new Date().getTime());
+  }
 
   console.log('Injecting Fanplayr Integration script: ' + url);
   var first = document.getElementsByTagName('script')[0];
