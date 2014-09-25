@@ -18,9 +18,10 @@ The extension should now be installed.
 
 ### Creating a new rule
 
-1. Open the extension options by right-clicking any page and selecting **Fanplayr > Script Injector**.
-2. Click **New Rule** to define a new rule.
+1. On **any** webpage, right-click and select **Fanplayr > Script Injector**.
+2. Click the **New Rule** button at the bottom to define a new rule.
 3. Enter the website's domain, url or pattern to match against.
+    - Enter the customer's domain, for example `*fanplayr.com*` to have this rule run on any page on http://www.fanplayr.com. 
 4. Enter the script's url or content.
 5. Click **Save Changes**.
 6. Enable the rule you just added.
